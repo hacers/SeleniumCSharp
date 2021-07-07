@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
+using TestProject1.Pages;
 
 namespace TestProject1
 {
@@ -31,7 +32,19 @@ namespace TestProject1
             //SelectElement selectElemet = new SelectElement(input1);
             CustomControl.ComboBox("ContentPlaceHolder1_AllMealsCombo", "Almond");
             Assert.Pass();
-            driver.Close();
+            
+        }
+        [Test]
+        public void LoginText()
+        {
+            driver.Navigate().GoToUrl("http://eaapp.somee.com/");
+            HomePage homePage = new HomePage();
+            Login login = new Login();
+
+            homePage.ClickLogin();
+            login.EnterUsernameAndPassword("admin", "password");
+            login.ClickLogin();
+
         }
     }
 }
